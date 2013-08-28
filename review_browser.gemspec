@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name                  = 'review_browser'
   s.version               = ReviewBrowser::VERSION
   s.authors               = ['Olery <development@olery.com>']
-  s.summary               = 'FIXME: Write this you lazy git.'
+  s.summary               = 'Rails engine application for Review Browser'
   s.description           = s.summary
   s.has_rdoc              = 'yard'
   s.required_ruby_version = '>= 1.9.3'
@@ -18,9 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mysql2'
   s.add_dependency 'mongoid', '~> 3.0'
 
-  # Uncomment the following lines if you'd like to use these Gems, otherwise
-  # just remove them:
-  #s.add_dependency 'jquery-rails'
-  #s.add_dependency 'kaminari'
-  #s.add_dependency 'active_model_serializers'
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'kaminari'
+  s.add_dependency 'active_model_serializers'
 end
