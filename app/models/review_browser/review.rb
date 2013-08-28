@@ -5,6 +5,11 @@ module ReviewBrowser
     attr_accessible :source_name, :title, :trip_type, :visit_date, :visit_reason
     
     has_many :ratings
+    has_many :comments
+    has_one :reviewer
+    has_one :note
+    has_many :mini_sentences
+    belongs_to :hotel
     
     validates_uniqueness_of :review_id
   end
