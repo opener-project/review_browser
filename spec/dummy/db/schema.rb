@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828121721) do
+ActiveRecord::Schema.define(:version => 20130828123901) do
 
   create_table "review_browser_comments", :force => true do |t|
     t.integer  "review_id"
     t.string   "type"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_notes", :force => true do |t|
+    t.integer  "review_id"
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
