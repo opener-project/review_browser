@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828125716) do
+ActiveRecord::Schema.define(:version => 20130828130225) do
 
   create_table "review_browser_comments", :force => true do |t|
     t.integer  "review_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20130828125716) do
     t.string   "trip_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "sentiment"
   end
 
   create_table "review_browser_starred_reviews", :force => true do |t|
