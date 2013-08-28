@@ -1,0 +1,11 @@
+yardoc
+Gemfile.lock
+pkg
+coverage
+log/*.log
+spec/dummy/log/*.log
+.DS_Store
+.sass-cache
+tmp
+
+spec/dummy/public/app/
