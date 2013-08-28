@@ -7,7 +7,8 @@ module ReviewBrowser
     has_many :ratings
     has_many :comments
     has_one :reviewer
-    has_one :note
+    has_many :notes
+    has_many :tasks
     has_one :starred_review
     has_many :mini_sentences
     belongs_to :hotel
