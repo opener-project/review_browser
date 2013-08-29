@@ -1,19 +1,20 @@
 # encoding: UTF-8
 
 # Setup te wireframing review
-hotel = ReviewBrowser::Hotel.find_by_name("Casa 400")
-if hotel.nil?
-  hotel = ReviewBrowser::Hotel.create(:name=>"Casa 400",
+company = ReviewBrowser::Company.find_by_name("Casa 400")
+if company.nil?
+  company = ReviewBrowser::Company.create(:name=>"Casa 400",
                                       :city=>"Amsterdam",
                                       :country=>"The Netherlands")
 end
 review = ReviewBrowser::Review.create( :age_group=>"20-34",
                                        :recommend=>false,
                                        :trip_type=>"pleasure",
+                                       :review_id => Time.now.to_i,
                                        :visit_date=>3.days.ago,
                                        :visit_reason=>"Holidays",
                                        :reservation_number=>"12353",
-                                       :hotel_id=> hotel.id,
+                                       :company_id=> company.id,
                                        :source_name=>"trip_advisor",
                                        :title=>"Very, very, very inferior!!",
                                        :language=>"english",
@@ -43,22 +44,24 @@ comment_text = "I stayed on this Hotel for 3 nights. The hotel looks modern
 
 review.comments << ReviewBrowser::Comment.create(:type=>"general",
                                                  :body=>comment_text)
+                                                 
+domain = ReviewBrowser::Domain.create(:name => "cleanliness")
 
 ReviewBrowser::Reviewer.create(:name=>"Peter Boermans",
                                :location=>"Amsterdam",
                                :review_id=>review.id)
 
-ReviewBrowser::MiniSentence.create(:sentiment=>"negative",
-                                   :topic=>"cleanliness",
+ReviewBrowser::OpinionExpression.create(:sentiment=>"negative",
+                                   :domain_id=>domain.id,
                                    :review_id=>review.id,
                                    :body=>"my bedsheets were not changed")
 
-ReviewBrowser::MiniSentence.create(:sentiment=>"negative",
-                                   :topic=>"cleanliness",
+ReviewBrowser::OpinionExpression.create(:sentiment=>"negative",
+                                   :domain_id=>domain.id,
                                    :review_id=>review.id,
                                    :body=>"the room was not cleaned very well")
 
-ReviewBrowser::MiniSentence.create(:sentiment=>"positive",
-                                   :topic=>"cleanliness",
+ReviewBrowser::OpinionExpression.create(:sentiment=>"positive",
+                                   :domain_id=>domain.id,
                                    :review_id=>review.id,
                                    :body=>"he bathroom was very clean")
