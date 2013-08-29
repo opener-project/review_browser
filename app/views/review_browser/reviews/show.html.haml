@@ -1,0 +1,142 @@
+.row
+  .col-md-6.col-md-offset-3
+    %span.label.label-success Cleanliness
+    - ["Value","Location","Rooms","Service"].each do |label|
+      =link_to label, nil, :class=>"label label-default"
+    .navigate.pull-right
+      =link_to "previous", nil, :class=>"btn btn-xs btn-primary"
+      =link_to "next", nil, :class=>"btn btn-xs btn-primary"
+
+.row
+  .col-md-3.left-bar
+    %section#review
+      %h4 Review
+      %table.table
+        %tr
+          %th Source
+          %td TripAdvisor
+        %tr
+          %th Publish Date
+          %td=Date.today.to_s(:long)
+        %tr
+          %th Month of stay
+          %td=1.month.ago.to_date.to_s(:short)
+
+    %section#ratings
+      %h4 Rating details
+      %table.table
+        -["overall","value","rooms","location","cleanliness","service"].each do |rating|
+          %tr
+            %th=rating.capitalize
+            %td=random_stars
+
+    %section#author
+      %h4 Author
+      %table.table
+        %tr
+          %th Name
+          %td Peter Boermans
+        %tr
+          %th Location
+          %td Amsterdam
+        %tr
+          %th Contributions
+          %td=rand(10)+1
+
+  .col-md-6
+    %h1.page-header
+      Very, very, very inferior!!
+      %span.glyphicon.glyphicon-star.star.pull-right
+      %small
+        %span.date=Date.today.to_s(:long)
+    %h3 Review summary
+    .well
+      .row
+        .positive.col-md-6
+          %blockquote ``...the bathroom was very clean...''
+        .negative.col-md-6
+          %blockquote ``...my bedsheets were not changed...''
+          %blockquote ``...the room was not cleaned very well...''
+    %hr/
+    .review-comment
+      %h3 Review text
+      %p
+        I stayed on this Hotel for 3 nights. The hotel looks modern superficially.
+        But the service and breakfast in particular are in big question mark.
+        <span class="topic">My bed sheets were not changed</span>, <span class="topic">the room was not cleaned very well</span>, except for <span class="topic">the bathroom, which was very clean</span>.
+        As this hotel caters for large overseas bus groups there were long time
+        consuming lines at reception. The hotel is a long way from the city centre,
+        only one restaurant nearby, so your only option is to take the metro to
+        get anywhere. Fortunately, the metro is 5 minutes away.
+        Casa 400 has a business model: rooms appear as cheap when you want to
+        book, but you have to take into account that breakfast is not
+        included (€15). Want to have your breakfast in the vicinity? Good luck.
+    %hr/
+    .related-reviews
+      %h3 Related reviews
+      .row
+        .related.col-md-6
+          .positive
+            %blockquote
+              =quotify("this is positive quote")
+              %small="Peter Boermans, "+rand(20).days.ago.to_s(:short)
+        .related.col-md-6
+          .positive
+            %blockquote
+              =quotify("this is positive quote")
+              %small="Peter Boermans, "+rand(20).days.ago.to_s(:short)
+        .related.col-md-6
+          .positive
+            %blockquote
+              =quotify("this is positive quote")
+              %small="Peter Boermans, "+rand(20).days.ago.to_s(:short)
+        .related.col-md-6
+          .negative
+            %blockquote
+              =quotify("this is negative quote")
+              %small="Peter Boermans, "+rand(20).days.ago.to_s(:short)
+  .col-md-3.right-bar
+    %section#actions
+      %h4 Actions
+      %ul.list-group
+        %li.list-group-item
+          %span.glyphicon.glyphicon-font
+          =link_to "Translate"
+        %li.list-group-item
+          %span.glyphicon.glyphicon-repeat
+          =link_to "Change sentiment"
+        %li.list-group-item
+          %span.glyphicon.glyphicon-share-alt
+          =link_to "Send to colleague"
+        %li.list-group-item
+          %span.glyphicon.glyphicon-pencil
+          =link_to "Respond"
+    %section#notes
+      %h4
+        Notes
+        =link_to "New note", nil, :class=>"btn btn-primary btn-xs pull-right"
+      .list-group
+        =link_to nil, :class=>"list-group-item" do
+          %h5.list-group-item-heading Note number 1
+          %p Lorem Lipsum ...
+        =link_to nil, :class=>"list-group-item" do
+          %h5.list-group-item-heading Note number 2
+          %p Lorem Lipsum ...
+        =link_to nil, :class=>"list-group-item" do
+          %h5.list-group-item-heading Note number 3
+          %p Lorem Lipsum ...
+
+    %section#tasks
+      %h4
+        Tasks
+        =link_to "New Task", nil, :class=>"btn btn-primary btn-xs pull-right"
+      .list-group
+        =link_to nil, :class=>"list-group-item" do
+          %h5.list-group-item-heading Task number 1
+          %p Lorem Lipsum ...
+        =link_to nil, :class=>"list-group-item" do
+          %h5.list-group-item-heading Task number 2
+          %p Lorem Lipsum ...
+        =link_to nil, :class=>"list-group-item" do
+          %h5.list-group-item-heading Task number 3
+          %p Lorem Lipsum ...

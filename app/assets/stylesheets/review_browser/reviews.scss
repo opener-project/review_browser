@@ -1,0 +1,61 @@
+body {
+  margin-top: 2em;
+}
+
+.star {
+  color: #FDDA2F;
+}
+
+.review-comment p{
+  font-size: 110%;
+  line-height: 1.8em;
+}
+
+.review-comment p::selection {
+  background-color: #FF0;
+}
+
+.review-comment {
+  .holder, .sentiment, .topic {
+    background-color: #FF0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+.positive blockquote, .negative blockquote {
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+.positive blockquote {
+  border-color: #0F0;
+}
+
+.negative blockquote {
+  border-color: #F00;
+}
+
+.left-bar table.table tr th {
+  font-weight: normal;
+}
+
+
+.left-bar, .right-bar {
+  margin-top: 3.53em;
+  opacity: 0.3;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.left-bar:hover, .right-bar:hover {
+  opacity: 1.0;
+}
+
+.related-reviews .related blockquote:hover {
+  background-color: #EEE;
+  cursor: pointer;
+}

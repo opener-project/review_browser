@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(:version => 20130828123901) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "review_browser_review_ratings", :force => true do |t|
-    t.integer  "review_id"
-    t.string   "topic"
-    t.integer  "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "review_browser_review_reviewers", :force => true do |t|
-    t.integer  "review_id"
-    t.string   "name"
-    t.string   "location"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "review_browser_reviewers", :force => true do |t|
     t.integer  "review_id"
     t.string   "name"
