@@ -27,5 +27,9 @@ module ReviewBrowser
     def find(*args)
       find_by_review_id(*args)
     end
+    
+    def general_comment
+      Comments::General.find_by_review_id(self.id)
+    end
   end
 end
