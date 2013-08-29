@@ -7,10 +7,11 @@ module ReviewBrowser
     
     validates_presence_of :review_id
 
-    def self.same_domain
-      where(:domain_id => domain_id)
+    def same_domain
+      RelatedOpinionsFinder.for(self)
     end
-    
+    alias :related :same_domain
+        
     def self.positive
       where(:sentiment => "positive")
     end
@@ -18,10 +19,5 @@ module ReviewBrowser
     def self.negative
       where(:sentiment => "negative")
     end
-
-    def self.related
-      same_domain
-    end
-
   end
 end

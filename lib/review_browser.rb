@@ -14,4 +14,5 @@ require 'kaminari'
 #require 'olery/models/mongoid/review'
 
 require_relative 'review_browser/engine'
+require_relative 'review_browser/related_opinions_finder'
 require_relative 'review_browser/version'
