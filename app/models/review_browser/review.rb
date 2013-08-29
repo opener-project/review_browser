@@ -5,7 +5,7 @@ module ReviewBrowser
                     :reservation_number, :reviewer_type
 
     attr_accessible :hotel_id, :review_id, :source_name
-    attr_accessible :title, :language, :manager_response :review_date, :review_id
+    attr_accessible :title, :language, :manager_response, :review_date, :review_id
 
     has_many :ratings
     has_many :comments
