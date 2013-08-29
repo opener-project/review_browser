@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829092645) do
+ActiveRecord::Schema.define(:version => 20130829093827) do
 
   create_table "review_browser_comments", :force => true do |t|
     t.integer  "review_id"
@@ -67,22 +67,6 @@ ActiveRecord::Schema.define(:version => 20130829092645) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "review_browser_review_ratings", :force => true do |t|
-    t.integer  "review_id"
-    t.string   "topic"
-    t.integer  "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "review_browser_review_reviewers", :force => true do |t|
-    t.integer  "review_id"
-    t.string   "name"
-    t.string   "location"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "review_browser_reviewers", :force => true do |t|
     t.integer  "review_id"
     t.string   "name"
@@ -93,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20130829092645) do
 
   create_table "review_browser_reviews", :force => true do |t|
     t.string   "review_id"
-    t.integer  "hotel_id"
+    t.integer  "company_id"
     t.string   "reservation_number"
     t.string   "age_group"
     t.boolean  "recommend"
