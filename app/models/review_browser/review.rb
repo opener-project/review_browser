@@ -9,6 +9,10 @@ module ReviewBrowser
 
     has_many :ratings
     has_many :comments
+    
+    has_one :general_comment, :class_name => Comments::General
+    has_one :manager_comment, :class_name => Comments::Manager
+    
     has_one :reviewer
     has_many :notes
     has_many :tasks
@@ -18,7 +22,7 @@ module ReviewBrowser
     
 
     validates_uniqueness_of :review_id
-    validates_presence_of :hotel_id
+    validates_presence_of :company_id
 
     def starred
       !!self.starred_review || false
@@ -28,8 +32,10 @@ module ReviewBrowser
       find_by_review_id(*args)
     end
     
-    def general_comment
-      Comments::General.find_by_review_id(self.id)
+    def related_reviews(domain_name)
+      domain = Domain.find_by_name(domain_name)
+      company = Company.find(self.company_id)
+      company.reviews.joins(:opinion_expressions).where("review_browser_opinion_expressions.domain_id = ?", domain.id)
     end
   end
 end
