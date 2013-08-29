@@ -11,12 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828123901) do
+ActiveRecord::Schema.define(:version => 20130828153115) do
 
   create_table "review_browser_comments", :force => true do |t|
     t.integer  "review_id"
     t.string   "type"
     t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_hotels", :force => true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_mini_sentences", :force => true do |t|
+    t.integer  "review_id"
+    t.string   "topic"
+    t.text     "body"
+    t.string   "sentiment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -61,6 +78,21 @@ ActiveRecord::Schema.define(:version => 20130828123901) do
     t.string   "trip_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "sentiment"
+  end
+
+  create_table "review_browser_starred_reviews", :force => true do |t|
+    t.string   "review_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_tasks", :force => true do |t|
+    t.integer  "review_id"
+    t.string   "email"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
