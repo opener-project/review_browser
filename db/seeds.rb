@@ -18,7 +18,7 @@ review = ReviewBrowser::Review.create( :age_group=>"20-34",
                                        :source_name=>"trip_advisor",
                                        :title=>"Very, very, very inferior!!",
                                        :language=>"english",
-                                       :sentiment=>-1,
+                                       :sentiment=>"negative",
                                        :review_date=>1.day.ago )
 
 ratings = [["overall",60],
@@ -44,7 +44,7 @@ comment_text = "I stayed on this Hotel for 3 nights. The hotel looks modern
 
 review.comments << ReviewBrowser::Comments::General.create(:body=>comment_text)
                                                  
-domain = ReviewBrowser::Domain.create(:name => "cleanliness")
+domain = ReviewBrowser::Domain.find_or_create_by_name("cleanliness")
 
 ReviewBrowser::Reviewer.create(:name=>"Peter Boermans",
                                :location=>"Amsterdam",
