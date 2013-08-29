@@ -45,5 +45,9 @@ module ReviewBrowser
     def related_opinion_expressions(domain)
       self.opinion_expressions.where(:domain_id => domain.id)
     end
+    
+    def self.exclude(review)
+      where("review_browser_reviews.id != ?", review.id)
+    end
   end
 end
