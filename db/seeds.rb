@@ -43,8 +43,10 @@ comment_text = "I stayed on this Hotel for 3 nights. The hotel looks modern
   is not included (€15). Want to have your breakfast in the vicinity? Good luck."
 
 review.comments << ReviewBrowser::Comments::General.create(:body=>comment_text)
-                                                 
-domain = ReviewBrowser::Domain.find_or_create_by_name("cleanliness")
+domain = Domain.find_by_name("cleanliness")
+if domain.nil?                                      
+  domain = ReviewBrowser::Domain.create(:name => "cleanliness")
+end
 
 ReviewBrowser::Reviewer.create(:name=>"Peter Boermans",
                                :location=>"Amsterdam",
