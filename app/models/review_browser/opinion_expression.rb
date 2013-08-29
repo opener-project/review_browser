@@ -1,21 +1,17 @@
 module ReviewBrowser
   class OpinionExpression < ActiveRecord::Base
-    attr_accessible :body, :review_id, :sentiment, :topic
+    attr_accessible :body, :review_id, :sentiment, :domain_id
 
     belongs_to :review
+    belongs_to :domain
 
-    def self.same_topic
-      where(:topic => topic)
+    def self.same_domain
+      where(:domain_id => domain_id)
     end
 
     def self.related
-      same_topic.where(create_query(body))
+      same_domain
     end
 
-    def create_query(body)
-      body.split(" ").map do |word|
-        "(body LIKE '%#{word}%')"
-      end.uniq.join(" OR ")
-    end
   end
 end

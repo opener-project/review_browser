@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130829092352) do
+ActiveRecord::Schema.define(:version => 20130829092645) do
 
   create_table "review_browser_comments", :force => true do |t|
     t.integer  "review_id"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(:version => 20130829092352) do
     t.string   "name"
     t.string   "city"
     t.string   "country"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_domains", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
