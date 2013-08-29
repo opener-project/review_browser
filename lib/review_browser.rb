@@ -2,7 +2,6 @@
 # line:
 #require 'active_model_serializers'
 
-require 'mongoid'
 require 'haml-rails'
 require 'jquery-rails'
 require 'kaminari'
