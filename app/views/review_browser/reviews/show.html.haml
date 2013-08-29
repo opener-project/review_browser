@@ -114,29 +114,20 @@
     %section#notes
       %h4
         Notes
-        =link_to "New note", nil, :class=>"btn btn-primary btn-xs pull-right"
-      .list-group
-        =link_to nil, :class=>"list-group-item" do
-          %h5.list-group-item-heading Note number 1
-          %p Lorem Lipsum ...
-        =link_to nil, :class=>"list-group-item" do
-          %h5.list-group-item-heading Note number 2
-          %p Lorem Lipsum ...
-        =link_to nil, :class=>"list-group-item" do
-          %h5.list-group-item-heading Note number 3
-          %p Lorem Lipsum ...
+        =link_to "New note", new_review_note_path(@review),
+          :class=>"btn btn-primary btn-xs pull-right",
+          :data=>{:toggle=>"modal",
+                  :target=>"#notesModal"}
+      .list-group#notes-list=render :partial=>"review_browser/notes/notes"
 
     %section#tasks
       %h4
         Tasks
-        =link_to "New Task", nil, :class=>"btn btn-primary btn-xs pull-right"
-      .list-group
-        =link_to nil, :class=>"list-group-item" do
-          %h5.list-group-item-heading Task number 1
-          %p Lorem Lipsum ...
-        =link_to nil, :class=>"list-group-item" do
-          %h5.list-group-item-heading Task number 2
-          %p Lorem Lipsum ...
-        =link_to nil, :class=>"list-group-item" do
-          %h5.list-group-item-heading Task number 3
-          %p Lorem Lipsum ...
+        =link_to "New task", new_review_task_path(@review),
+          :class=>"btn btn-primary btn-xs pull-right",
+          :data=>{:toggle=>"modal",
+                  :target=>"#tasksModal"}
+      .list-group#tasks-list=render(@review.tasks) || "No tasks assigned"
+
+=render "notes_modal"
+=render "tasks_modal"
