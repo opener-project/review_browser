@@ -10,6 +10,14 @@ module ReviewBrowser
     def self.same_domain
       where(:domain_id => domain_id)
     end
+    
+    def self.positive
+      where(:sentiment => "positive")
+    end
+    
+    def self.negative
+      where(:sentiment => "negative")
+    end
 
     def self.related
       same_domain
