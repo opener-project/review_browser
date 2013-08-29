@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828153115) do
+ActiveRecord::Schema.define(:version => 20130829090146) do
 
   create_table "review_browser_comments", :force => true do |t|
     t.integer  "review_id"
@@ -29,7 +29,14 @@ ActiveRecord::Schema.define(:version => 20130828153115) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "review_browser_mini_sentences", :force => true do |t|
+  create_table "review_browser_notes", :force => true do |t|
+    t.integer  "review_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_opinion_expressions", :force => true do |t|
     t.integer  "review_id"
     t.string   "topic"
     t.text     "body"
@@ -38,17 +45,26 @@ ActiveRecord::Schema.define(:version => 20130828153115) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "review_browser_notes", :force => true do |t|
-    t.integer  "review_id"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "review_browser_ratings", :force => true do |t|
     t.integer  "review_id"
     t.string   "topic"
     t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_review_ratings", :force => true do |t|
+    t.integer  "review_id"
+    t.string   "topic"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "review_browser_review_reviewers", :force => true do |t|
+    t.integer  "review_id"
+    t.string   "name"
+    t.string   "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -78,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20130828153115) do
     t.string   "trip_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.integer  "sentiment"
+    t.string   "sentiment"
   end
 
   create_table "review_browser_starred_reviews", :force => true do |t|
