@@ -1,9 +1,12 @@
 module ReviewBrowser
   class Review < ActiveRecord::Base
-    attr_accessible :age_group, :hotel_id, :language, :manager_response, :recommend
-    attr_accessible :reservation_number, :review_date, :review_id, :reviewer_type
-    attr_accessible :source_name, :title, :trip_type, :visit_date, :visit_reason
-    
+    #Reviewer Data
+    attr_accessible :age_group, :recommend, :trip_type, :visit_date, :visit_reason,
+                    :reservation_number, :reviewer_type
+
+    attr_accessible :hotel_id, :review_id, :source_name
+    attr_accessible :title, :language, :manager_response :review_date, :review_id
+
     has_many :ratings
     has_many :comments
     has_one :reviewer
@@ -12,10 +15,9 @@ module ReviewBrowser
     has_one :starred_review
     has_many :mini_sentences
     belongs_to :hotel
-    
+
     validates_uniqueness_of :review_id
-    
-    
+
     def starred
       !!self.starred_review || false
     end
