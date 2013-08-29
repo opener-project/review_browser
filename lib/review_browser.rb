@@ -15,4 +15,5 @@ require 'kaminari'
 
 require_relative 'review_browser/engine'
 require_relative 'review_browser/related_opinions_finder'
+require_relative 'review_browser/review_importer'
 require_relative 'review_browser/version'
