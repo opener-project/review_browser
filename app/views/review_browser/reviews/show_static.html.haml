@@ -14,31 +14,31 @@
       %table.table
         %tr
           %th Source
-          %td=@review.source_name.humanize
+          %td TripAdvisor
         %tr
           %th Publish Date
-          %td=@review.review_date.to_s(:long)
+          %td=Date.today.to_s(:long)
         %tr
           %th Month of stay
-          %td=l @review.visit_date, :format=>:month
+          %td=1.month.ago.to_date.to_s(:short)
 
     %section#ratings
       %h4 Rating details
       %table.table
-        -@review.ratings.each do |rating|
+        -["overall","value","rooms","location","cleanliness","service"].each do |rating|
           %tr
-            %th=rating.topic.capitalize
-            %td=star(rating.stars)
+            %th=rating.capitalize
+            %td=random_stars
 
     %section#author
       %h4 Author
       %table.table
         %tr
           %th Name
-          %td=@review.reviewer.name
+          %td Peter Boermans
         %tr
           %th Location
-          %td=@review.reviewer.location
+          %td Amsterdam
         %tr
           %th Contributions
           %td=rand(10)+1

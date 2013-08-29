@@ -1,9 +1,9 @@
 module ReviewBrowser
   module ApplicationHelper
 
-    def random_stars
+    def star(stars)
       content = ""
-      full = rand(5)
+      full = stars
       empty = 5 - full
 
       full.times do

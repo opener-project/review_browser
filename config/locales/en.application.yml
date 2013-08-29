@@ -1,3 +1,6 @@
 ---
 en:
   review_browser:
+  date:
+    formats:
+      month: "%B, %Y"
