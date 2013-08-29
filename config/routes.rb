@@ -3,5 +3,8 @@ ReviewBrowser::Engine.routes.draw do
 
   root :to => 'home#index'
 
-  resources :reviews
+  resources :reviews do
+    resources :notes
+    resources :tasks
+  end
 end

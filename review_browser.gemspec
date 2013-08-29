@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails', '~> 3.2'
   s.add_dependency 'haml-rails', '~> 0.4'
   s.add_dependency 'mysql2'
+  s.add_dependency 'simple_form'
 
   s.add_dependency 'jquery-rails'
   s.add_dependency 'kaminari'

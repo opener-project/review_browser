@@ -1,0 +1,17 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= simple_form_for [@review, @note], :remote=>true, :data=>{:'update-target'=>"#notes-list"} do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">New note</h4>
+      </div>
+      <div class="modal-body">
+        <%=f.input :body, :label=>false, :input_html=>{:cols=>85, :rows=>5} %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary">save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  <% end %>
+</div><!-- /.modal-dialog -->
