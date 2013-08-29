@@ -43,11 +43,11 @@ module ReviewBrowser
     
     def create_ratings(review, cleanliness, overall, value, rooms, location, service)
       ratings = []
-      ratings << ["overall",(overall*10).to_i] if overall
-      ratings << ["value",(value*10).to_i] if value
-      ratings << ["rooms",(rooms*10).to_i] if rooms
-      ratings << ["location",(location*10).to_i] if location
-      ratings << ["cleanliness",(cleanliness*10).to_i] if location
+      ratings << ["overall",(overall.to_f*10).to_i] if overall
+      ratings << ["value",(value.to_f*10).to_i] if value
+      ratings << ["rooms",(rooms.to_f*10).to_i] if rooms
+      ratings << ["location",(location.to_f*10).to_i] if location
+      ratings << ["cleanliness",(cleanliness.to_f*10).to_i] if location
 
       ratings.each do |topic, value|
         review.ratings << ReviewBrowser::Rating.create(:topic=>topic, :value=>value)
