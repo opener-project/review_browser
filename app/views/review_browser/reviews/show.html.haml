@@ -46,7 +46,7 @@
   .col-md-6
     %h1.page-header
       = @review.title
-      %span.glyphicon.glyphicon-star.star.pull-right
+      %span.glyphicon.glyphicon-star.star.pull-right{ :class=> ("active" if @review.starred)}
       %small
         %span.date=@review.review_date.to_s(:long)
     %h3 Review summary
@@ -71,8 +71,9 @@
           .related.col-md-6
             %div{:class => review.related_opinion_expressions(@domain).first.sentiment}
               %blockquote
-                =quotify(review.related_opinion_expressions(@domain).first.body)
-                %small="#{review.reviewer.name}, #{review.review_date.to_s(:short)}" 
+                =link_to quotify(review.related_opinion_expressions(@domain).first.body), review_path(review)
+                %small
+                  ="#{review.reviewer.name}, #{review.review_date.to_s(:short)}"
   .col-md-3.right-bar
     %section#actions
       %h4 Actions
