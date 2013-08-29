@@ -45,32 +45,24 @@
 
   .col-md-6
     %h1.page-header
-      Very, very, very inferior!!
+      = @review.title
       %span.glyphicon.glyphicon-star.star.pull-right
       %small
-        %span.date=Date.today.to_s(:long)
+        %span.date=@review.review_date.to_s(:long)
     %h3 Review summary
     .well
       .row
         .positive.col-md-6
-          %blockquote ``...the bathroom was very clean...''
+          - @review.opinion_expressions.positive.each do |opinion_expression|
+            %blockquote=quotify(opinion_expression.body)
         .negative.col-md-6
-          %blockquote ``...my bedsheets were not changed...''
-          %blockquote ``...the room was not cleaned very well...''
+          - @review.opinion_expressions.negative.each do |opinion_expression|
+            %blockquote=quotify(opinion_expression.body)
     %hr/
     .review-comment
       %h3 Review text
       %p
-        I stayed on this Hotel for 3 nights. The hotel looks modern superficially.
-        But the service and breakfast in particular are in big question mark.
-        <span class="topic">My bed sheets were not changed</span>, <span class="topic">the room was not cleaned very well</span>, except for <span class="topic">the bathroom, which was very clean</span>.
-        As this hotel caters for large overseas bus groups there were long time
-        consuming lines at reception. The hotel is a long way from the city centre,
-        only one restaurant nearby, so your only option is to take the metro to
-        get anywhere. Fortunately, the metro is 5 minutes away.
-        Casa 400 has a business model: rooms appear as cheap when you want to
-        book, but you have to take into account that breakfast is not
-        included (€15). Want to have your breakfast in the vicinity? Good luck.
+        =@review.general_comment.body
     %hr/
     .related-reviews
       %h3 Related reviews
