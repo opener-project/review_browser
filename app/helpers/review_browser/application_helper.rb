@@ -17,7 +17,7 @@ module ReviewBrowser
     end
 
     def quotify(text)
-     "``...#{text}...''"
+     "`` ...#{text}... ''"
     end
   end
 
