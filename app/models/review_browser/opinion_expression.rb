@@ -4,6 +4,8 @@ module ReviewBrowser
 
     belongs_to :review
     belongs_to :domain
+    
+    validates_presence_of :review_id
 
     def self.same_domain
       where(:domain_id => domain_id)
