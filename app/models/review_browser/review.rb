@@ -13,13 +13,17 @@ module ReviewBrowser
     has_many :notes
     has_many :tasks
     has_one :starred_review
-    has_many :mini_sentences
-    belongs_to :hotel
+    has_many :opinion_expressions
+    belongs_to :company
 
     validates_uniqueness_of :review_id
 
     def starred
       !!self.starred_review || false
+    end
+    
+    def find(*args)
+      find_by_review_id(*args)
     end
   end
 end
