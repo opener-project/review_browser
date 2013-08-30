@@ -9,17 +9,16 @@ module ReviewBrowser
 
     has_many :ratings
     has_many :comments
-    
+
     has_one :general_comment, :class_name => Comments::General
     has_one :manager_comment, :class_name => Comments::Manager
-    
+
     has_one :reviewer
     has_many :notes
     has_many :tasks
     has_one :starred_review
     has_many :opinion_expressions
     belongs_to :company
-    
 
     validates_uniqueness_of :review_id
     validates_presence_of :company_id
@@ -27,15 +26,21 @@ module ReviewBrowser
     def starred
       !!self.starred_review || false
     end
-    
+
     def find(*args)
       find_by_review_id(*args)
     end
-    
+
     def related_reviews(domain_name)
       domain = Domain.find_by_name(domain_name)
       company = Company.find(self.company_id)
       company.reviews.joins(:opinion_expressions).where("review_browser_opinion_expressions.domain_id = ?", domain.id)
+    end
+
+    def analyze
+      response = Analyzer.analyze(general_comment.body)
+      puts response
+      update_attribute(:request_id, response["request_id"])
     end
   end
 end

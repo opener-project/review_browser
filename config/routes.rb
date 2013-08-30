@@ -3,6 +3,8 @@ ReviewBrowser::Engine.routes.draw do
 
   root :to => 'home#index'
 
+  post 'outlet', :to=>"outlet#create"
+
   resources :reviews do
     resources :notes
     resources :tasks
