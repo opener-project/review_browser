@@ -2,8 +2,16 @@ body {
   margin-top: 2em;
 }
 
-.star {
+.star.active {
   color: #FDDA2F;
+}
+
+.star {
+  color: #EEE;
+}
+
+.star:hover {
+  cursor: pointer;
 }
 
 .review-comment p{
@@ -30,6 +38,10 @@ body {
 .positive blockquote, .negative blockquote {
   margin-bottom: 5px;
   font-style: italic;
+}
+
+.positive blockquote a , .negative blockquote a {
+  color: #000;
 }
 
 .positive blockquote {

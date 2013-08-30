@@ -18,7 +18,7 @@ review = ReviewBrowser::Review.create( :age_group=>"20-34",
                                        :source_name=>"trip_advisor",
                                        :title=>"Very, very, very inferior!!",
                                        :language=>"english",
-                                       :sentiment=>-1,
+                                       :sentiment=>"negative",
                                        :review_date=>1.day.ago )
 
 ratings = [["overall",60],
@@ -42,10 +42,11 @@ comment_text = "I stayed on this Hotel for 3 nights. The hotel looks modern
   cheap when you want to book, but you have to take into account that breakfast
   is not included (€15). Want to have your breakfast in the vicinity? Good luck."
 
-review.comments << ReviewBrowser::Comment.create(:type=>"general",
-                                                 :body=>comment_text)
-                                                 
-domain = ReviewBrowser::Domain.create(:name => "cleanliness")
+review.comments << ReviewBrowser::Comments::General.create(:body=>comment_text)
+domain = Domain.find_by_name("cleanliness")
+if domain.nil?                                      
+  domain = ReviewBrowser::Domain.create(:name => "cleanliness")
+end
 
 ReviewBrowser::Reviewer.create(:name=>"Peter Boermans",
                                :location=>"Amsterdam",

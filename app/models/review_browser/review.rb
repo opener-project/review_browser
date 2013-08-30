@@ -31,10 +31,22 @@ module ReviewBrowser
       find_by_review_id(*args)
     end
 
-    def related_reviews(domain_name)
-      domain = Domain.find_by_name(domain_name)
+    def related_reviews(domain)
       company = Company.find(self.company_id)
-      company.reviews.joins(:opinion_expressions).where("review_browser_opinion_expressions.domain_id = ?", domain.id)
+      company.
+      reviews.
+      joins(:opinion_expressions).
+      group("review_browser_reviews.review_id").
+      order("review_date DESC").
+      where("review_browser_opinion_expressions.domain_id = ?", domain.id)
+    end
+
+    def related_opinion_expressions(domain)
+      self.opinion_expressions.where(:domain_id => domain.id)
+    end
+
+    def self.exclude(review)
+      where("review_browser_reviews.id != ?", review.id)
     end
 
     def analyze
