@@ -25,15 +25,14 @@ module ReviewBrowser
     end
 
     def create_review(title, body, review_date, source_name)
-      ReviewBrowser::Review.create(
-                                             :review_id => Time.now.to_i,
-                                             :visit_date=>review_date,
-                                             :company_id=> 1,
-                                             :source_name=>source_name,
-                                             :title=> title,
-                                             :language=>"English",
-                                             :review_date=>review_date,
-                                              )
+      ReviewBrowser::Review.create(:review_id => rand(1000),
+                                   :visit_date=>review_date,
+                                   :company_id=> 1,
+                                   :source_name=>source_name,
+                                   :title=> title,
+                                   :language=>"English",
+                                   :review_date=>review_date,
+                                  )
     end
 
     def create_reviewer(review, name, location)

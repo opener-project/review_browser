@@ -4,10 +4,10 @@ module ReviewBrowser
     define_processors "language-identifier",
       "tokenizer",
       "pos-tagger",
+      "property-tagger",
       "polarity-tagger",
       "ner",
-      "opinion-detector",
-      "property-tagger"
+      "opinion-detector"
 
 
     # Defaults to :async, other option is :sync

@@ -7,4 +7,10 @@ $(function() {
         var target = $(this).data('update-target');
         $('#' + target).html(data);
     });
+
+    domains = window.location.search.split("=")[1].split(",")
+    for(i=0; i < domains.length; i++){
+      console.log(domains[i]);
+      $('span[data-property="'+domains[i]+'"]').addClass("domain");
+    };
 });

@@ -1,11 +1,14 @@
 .row
-  .col-md-6.col-md-offset-3
-    %span.label.label-success Cleanliness
-    - ["Value","Location","Rooms","Service"].each do |label|
-      =link_to label, nil, :class=>"label label-default"
+  .col-md-4.col-md-offset-3
+    - @domains.each do |domain|
+      =link_to domain.name.humanize.downcase, review_path(@review, :domains=>domain.name), :class=>"label label-success"
+    - @other_domains.each do |domain|
+      =link_to domain.name.humanize.downcase, review_path(@review, nil, :domains=>domain.name), :class=>"label label-default"
+    =link_to "all", nil, :class=>"label label-default"
+  .col-md-2
     .navigate.pull-right
-      =link_to "previous", review_path(params[:id].to_i-1), :class=>"btn btn-xs btn-primary"
-      =link_to "next", review_path(params[:id].to_i+1), :class=>"btn btn-xs btn-primary"
+      =link_to "previous", review_path(params[:id].to_i-1, :domains=>params[:domains]), :class=>"btn btn-xs btn-primary"
+      =link_to "next", review_path(params[:id].to_i+1, :domains=>params[:domains]), :class=>"btn btn-xs btn-primary"
 
 .row
   .col-md-3.left-bar
@@ -49,29 +52,41 @@
       %span.glyphicon.glyphicon-star.star.pull-right{ :class=> ("active" if @review.starred)}
       %small
         %span.date=@review.review_date.to_s(:long)
-    %h3 Review summary
+    -if @other_domains.size > 0
+      %h3 Review summary on #{@domains.map(&:name).join(", ")}
+    -else
+      %h3 Review summary
     .well
       .row
-        .positive.col-md-6
-          - @review.opinion_expressions(@domain).positive.each do |opinion_expression|
-            %blockquote=quotify(opinion_expression.body)
-        .negative.col-md-6
-          - @review.opinion_expressions.negative.each do |opinion_expression|
-            %blockquote=quotify(opinion_expression.body)
+        -if @review.related_opinion_expressions(@domains).count > 0
+          .positive.col-md-6
+            - @review.related_opinion_expressions(@domains).positive.each do |opinion_expression|
+              %blockquote=quotify(opinion_expression.body)
+          .negative.col-md-6
+            - @review.related_opinion_expressions(@domains).negative.each do |opinion_expression|
+              %blockquote=quotify(opinion_expression.body)
+        -else
+          .cold-md-12
+            %span No specific sentiments on #{@domains.map(&:name).join(", ")}
+    %small=link_to "show all sentiments (#{@review.opinion_expressions.count})", review_path(@review)
     %hr/
     .review-comment
       %h3 Review text
-      %p
-        =@review.general_comment.body
+      %p.text
+        -if @review.general_comment.parsed_body
+          =@review.general_comment.parsed_body.gsub(/(&nbsp;){2,}?/,'').html_safe
+          -#=@review.general_comment.parsed_body.html_safe
+        -else
+          =@review.general_comment.body
     %hr/
     .related-reviews
       %h3 Related reviews
       .row
         -@related_reviews.each do |review|
           .related.col-md-6
-            %div{:class => review.related_opinion_expressions(@domain).first.sentiment}
+            %div{:class => review.related_opinion_expressions(@domains).first.sentiment}
               %blockquote
-                =link_to quotify(review.related_opinion_expressions(@domain).first.body), review_path(review)
+                =link_to quotify(review.related_opinion_expressions(@domains).first.body), review_path(review, :domains=>params[:domains])
                 %small
                   ="#{review.reviewer.name}, #{review.review_date.to_s(:short)}"
   .col-md-3.right-bar

@@ -71,3 +71,21 @@ body {
   background-color: #EEE;
   cursor: pointer;
 }
+
+.opinion {
+  background-color: #FF0;
+  display: hidden;
+}
+
+
+p.text span, p.text span span {
+  display: inline-block;
+}
+
+.domain {
+  background-color: #DDF;
+}
+
+span.opinion {
+  display: hidden;
+}
