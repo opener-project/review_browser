@@ -10,7 +10,6 @@ $(function() {
 
     domains = window.location.search.split("=")[1].split(",")
     for(i=0; i < domains.length; i++){
-      console.log(domains[i]);
       $('span[data-property="'+domains[i]+'"]').addClass("domain");
     };
 });
