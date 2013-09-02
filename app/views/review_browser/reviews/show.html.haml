@@ -4,8 +4,8 @@
     - ["Value","Location","Rooms","Service"].each do |label|
       =link_to label, nil, :class=>"label label-default"
     .navigate.pull-right
-      =link_to "previous", nil, :class=>"btn btn-xs btn-primary"
-      =link_to "next", nil, :class=>"btn btn-xs btn-primary"
+      =link_to "previous", review_path(params[:id].to_i-1), :class=>"btn btn-xs btn-primary"
+      =link_to "next", review_path(params[:id].to_i+1), :class=>"btn btn-xs btn-primary"
 
 .row
   .col-md-3.left-bar
@@ -53,7 +53,7 @@
     .well
       .row
         .positive.col-md-6
-          - @review.related_opinion_expressions(@domain).positive.each do |opinion_expression|
+          - @review.opinion_expressions(@domain).positive.each do |opinion_expression|
             %blockquote=quotify(opinion_expression.body)
         .negative.col-md-6
           - @review.opinion_expressions.negative.each do |opinion_expression|

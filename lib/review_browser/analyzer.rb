@@ -6,7 +6,9 @@ module ReviewBrowser
       "pos-tagger",
       "polarity-tagger",
       "ner",
-      "opinion-detector"
+      "opinion-detector",
+      "property-tagger"
+
 
     # Defaults to :async, other option is :sync
     processor_style :async

@@ -6,6 +6,7 @@ module ReviewBrowser
       review = Review.find_by_request_id(params[:request_id])
       parsed_review = parser.parse(params[:input])
 
+      review.opinion_expressions.destroy_all
       parsed_review.opinions.each do |opinion|
         expression = OpinionExpression.create(:body=>opinion.text,
                                               :sentiment=>opinion.sentiment)

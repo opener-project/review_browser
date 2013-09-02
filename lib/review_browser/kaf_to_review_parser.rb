@@ -2,7 +2,7 @@ require 'opener/kaf_parser'
 
 module ReviewBrowser
   class KafToReviewParser
-    Review = Struct.new(:text, :opinions)
+    Review = Struct.new(:opinions)
     Opinion = Struct.new(:text, :sentiment)
 
     attr_reader :parser
@@ -14,8 +14,7 @@ module ReviewBrowser
     def parse(kaf)
       document = parser.parse(kaf)
       opinions = extract_opinions(document)
-      text = extract_text(kaf)
-      return Review.new(text, opinions)
+      return Review.new(opinions)
     end
 
     def extract_opinions(document)
@@ -28,10 +27,6 @@ module ReviewBrowser
 
         Opinion.new(text, sentiment)
       end
-    end
-
-    def extract_text(document)
-      "This is the text, don't know how to get the raw text out"
     end
 
   end
