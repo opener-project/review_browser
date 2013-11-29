@@ -3,16 +3,6 @@ source 'https://opener:Aek0YeeGup0ceephohcieW0eichiGha2Thoo0lohshunae9emaikeitai
 
 gemspec
 
-# RubyGems doesn't do Git dependencies. Sadly this means that container
-# applications also have to include this Gem as a dependency.
-#
-# Uncomment the following lines if you need to use the olery models Gem:
-#
-#gem 'olery_models',
-#  '>= 0.2.4',
-#  :git    => 'git@github.com:olery/models_gem.git',
-#  :branch => 'master'
-
 group :testing do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
