@@ -1,0 +1,13 @@
+development:
+  sessions:
+    default:
+      database: reputation_production
+      hosts:
+        - localhost
+
+test:
+  sessions:
+    default:
+      database: olery_test
+      hosts:
+        - localhost
