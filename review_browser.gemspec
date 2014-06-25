@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.description           = s.summary
   s.has_rdoc              = 'yard'
   s.required_ruby_version = '>= 1.9.3'
+  s.license               = 'Apache 2.0'
 
   s.files = `git ls-files`.split("\n").sort
 
