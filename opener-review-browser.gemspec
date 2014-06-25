@@ -1,7 +1,7 @@
 require File.expand_path('../lib/review_browser/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name                  = 'review_browser'
+  s.name                  = 'opener-review-browser'
   s.version               = ReviewBrowser::VERSION
   s.authors               = ['Olery <development@olery.com>']
   s.summary               = 'Rails engine application for Review Browser'
